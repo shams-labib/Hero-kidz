@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 
 export default function ProductCard({ product }) {
-  const { title, image, price, discount, ratings, reviews, sold } = product;
+  const { _id, title, image, price, discount, ratings, reviews, sold } =
+    product;
 
   const finalPrice = price - (price * discount) / 100;
 
@@ -42,11 +44,21 @@ export default function ProductCard({ product }) {
           <span className="text-sm line-through text-gray-400">৳{price}</span>
         </div>
 
-        {/* Add to Cart */}
-        <button className="btn btn-primary btn-sm mt-2 flex items-center gap-2">
-          <FaShoppingCart />
-          Add to Cart
-        </button>
+        {/* Buttons */}
+        <div className="flex flex-col gap-2 mt-2">
+          {/* Add to Cart */}
+          <button className="btn btn-primary btn-sm flex items-center gap-2">
+            <FaShoppingCart />
+            Add to Cart
+          </button>
+
+          {/* View Details */}
+          <Link href={`/products/${_id}`}>
+            <button className="btn btn-outline btn-sm w-full">
+              View Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
