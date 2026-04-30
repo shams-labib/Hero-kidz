@@ -1,4 +1,5 @@
 import { getSingleProduct } from "@/actions/server/product";
+import CartButtons from "@/components/buttons/CartButtons";
 import Image from "next/image";
 import {
   FaStar,
@@ -98,9 +99,7 @@ export default async function ProductDetails({ params }) {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="btn btn-primary btn-lg flex-1 shadow-xl hover:shadow-primary/20 gap-2">
-                <FaCartPlus className="text-xl" /> Add to Cart
-              </button>
+              <CartButtons product={product} />
               <button className="btn btn-outline btn-primary btn-lg px-10 border-2">
                 Buy Now
               </button>
